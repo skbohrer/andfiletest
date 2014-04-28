@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<label>File Name: 
+		<input type='text' id='fileName' value='testFileName.txt'>
+	</label>
+	<br>
+	<button id='writeFle'>Write File</button>
+	<p id='srcText'> Click the "Write File" button to write this paragraph's
+		text to a file, with the name from the "File Name" input. If the
+		write succeeds, or if the write fails and triggers an error callback
+		then an Alert dialog will be shown. However, if no Alert is shown,
+		then the write has failed with a lower-level error, shown only on the
+		console log. Note that the file writing code is adapted as directly 
+		as possible from the sample code at: 
+		http://www.html5rocks.com/en/tutorials/file/filesystem/
+	</p>
+	<p>Folder "AndFileTest" will be created (if it doesn't exist) in the 
+		default persistent file location. It will be readable by other
+		installed programs, so you can check the results of the writes of
+		sample text files to this folder by this program.
+	</p>
+	<p>This is a test of the Phonegap core file plugin, which seemed to fail
+		on our Samsung Galaxy 7 test device, even though it works on other
+		devices. We built this app with build.phonegap.com .
+		Source: https://github.com/skbohrer/andfiletest
+		Build: 
+	</p>
+
+	<script type='text/javascript' src='cordova.js'></script>
+	<script type='text/javascript' src='andfiletest.js'></script>
+
+</body>
+</html>
