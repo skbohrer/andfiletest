@@ -2,16 +2,16 @@
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
 		xmlns:android = "http://schemas.android.com/apk/res/android"
-        id          = "com.steadmanhill.andfiletest"
+        id          = "com.steadmanhill.andfileinternal"
         versionCode = "3"
         version     = "1.0" >
 
     <!-- versionCode is Android only: increase each build, unrelated to displayed version -->
 
-		<name>AndFileTest</name>
+		<name>AndFileInternal</name>
 
         <description>
-			Test build.phonegap.com app with core file plugin on various devices.
+			Test core file plugin on various devices.
         </description>
 
         <author email="dev.steadman.hill@gmail.com">
@@ -29,7 +29,7 @@
 				<!-- Android -->
 		<preference name="android-minSdkVersion" value="7" /> 			<!-- android: MIN SDK version supported on the target device. -->
 		<preference name="android-targetSdkVersion" value="19" /> 		<!-- highest version app was tested on. 19 == KitKat -->
-		<preference name="AndroidPersistentFileLocation" value="Compatibility" />  <!-- files at root of default shared directory, e.g. /storage/emulated/0/ -->
+		<preference name="AndroidPersistentFileLocation" value="Internal" />  <!-- files in private space -->
 
 		<gap:platform name="android" />
 		<gap:plugin name="org.apache.cordova.file" />
