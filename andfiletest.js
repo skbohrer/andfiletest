@@ -74,7 +74,7 @@ function errorHandler(e) {
   alert('Error: ' + msg);
 }
 
-/*
+
 function onGetDirectory(dirEntry) {
 
   dirEntry.getFile(theFileName, {create: true}, function(fileEntry) {
@@ -117,50 +117,6 @@ function doFileClick() {
     fs.root.getDirectory('AndFileTest', {create: true}, onGetDirectory, errorHandler);
   }, errorHandler);
 }
-*/
-
-
-function onInitFs(fs) {
-
-  fs.root.getFile(theFileName, {create: true}, function(fileEntry) {
-
-    // Create a FileWriter object for our FileEntry (log.txt).
-    fileEntry.createWriter(function(fileWriter) {
-      var blob;
-
-      fileWriter.onwriteend = function(e) {
-        alert('Success! Write completed.');
-      };
-
-      fileWriter.onerror = function(e) {
-        alert('Write failed: ' + e.toString());
-      };
-
-      // Create a new Blob and write it to log.txt.
-      blob = new Blob([theFileData], {type: 'text/plain'});
-
-      fileWriter.write(blob);
-
-    }, errorHandler);
-
-  }, errorHandler);
-
-}
-
-
-function doFileClick() {
-  theFileName = document.getElementById('fileName').value.trim();
-
-  if (!theFileName) {
-    alert('File Name can not be blank');
-    return;
-  }
-
-  theFileData = document.getElementById('srcText').innerHTML;
-
-  window.requestFileSystem(window.PERSISTENT, 5*1024*1024, onInitFs, errorHandler);
-}
-
 
 
 

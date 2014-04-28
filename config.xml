@@ -2,13 +2,13 @@
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
 		xmlns:android = "http://schemas.android.com/apk/res/android"
-        id          = "com.steadmanhill.andfileroot"
-        versionCode = "3"
+        id          = "com.steadmanhill.andfiletest"
+        versionCode = "4"
         version     = "1.0" >
 
     <!-- versionCode is Android only: increase each build, unrelated to displayed version -->
 
-		<name>AndFileRoot</name>
+		<name>AndFileTest</name>
 
         <description>
 			Test core file plugin on various devices.
