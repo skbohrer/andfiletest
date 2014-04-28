@@ -7,27 +7,67 @@ window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFile
 // (is there a better way to get arguments into a nested callback func?)
 var theFileName, theFileData;
 
+// error codes from plugin doc
+/*
+    1 = NOT_FOUND_ERR
+    2 = SECURITY_ERR
+    3 = ABORT_ERR
+    4 = NOT_READABLE_ERR
+    5 = ENCODING_ERR
+    6 = NO_MODIFICATION_ALLOWED_ERR
+    7 = INVALID_STATE_ERR
+    8 = SYNTAX_ERR
+    9 = INVALID_MODIFICATION_ERR
+    10 = QUOTA_EXCEEDED_ERR
+    11 = TYPE_MISMATCH_ERR
+    12 = PATH_EXISTS_ERR
+*/
+
+
+
 function errorHandler(e) {
   var msg = '';
 
+
   switch (e.code) {
-    case FileError.QUOTA_EXCEEDED_ERR:
-      msg = 'QUOTA_EXCEEDED_ERR';
-      break;
-    case FileError.NOT_FOUND_ERR:
+    case 1:
       msg = 'NOT_FOUND_ERR';
       break;
-    case FileError.SECURITY_ERR:
+    case 2:
       msg = 'SECURITY_ERR';
       break;
-    case FileError.INVALID_MODIFICATION_ERR:
-      msg = 'INVALID_MODIFICATION_ERR';
+    case 3:
+       msg = 'ABORT_ERR';
       break;
-    case FileError.INVALID_STATE_ERR:
+    case 4:
+      msg = 'NOT_READABLE_ERR';
+      break;
+    case 5:
+      msg = 'ENCODING_ERR';
+      break;
+    case 6:
+      msg = 'NO_MODIFICATION_ALLOWED_ERR';
+      break;
+    case 7:
       msg = 'INVALID_STATE_ERR';
       break;
+    case 8:
+      msg = 'SYNTAX_ERR';
+      break;
+    case 9:
+      msg = 'INVALID_MODIFICATION_ERR';
+      break;
+    case 10:
+      msg = 'QUOTA_EXCEEDED_ERR';
+      break;
+    case 11:
+      msg = 'TYPE_MISMATCH_ERR';
+      break;
+    case 12:
+      msg = 'PATH_EXISTS_ERR';
+      break;
     default:
-      msg = 'Unknown Error';
+      msg = 'Unknown Error. Code ==' + e.code;
       break;
   }
 
