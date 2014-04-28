@@ -1,5 +1,12 @@
 'use strict';
 
+window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+
+
+// Global vars for the file name and data to write
+// (is there a better way to get arguments into a nested callback func?)
+var theFileName, theFileData;
+
 function errorHandler(e) {
   var msg = '';
 
@@ -22,41 +29,30 @@ function errorHandler(e) {
     default:
       msg = 'Unknown Error';
       break;
-  };
+  }
 
   alert('Error: ' + msg);
 }
 
-window.requestFileSystem(window.PERSISTENT, 5*1024*1024, function(fs) {
-  fs.root.getDirectory('AndFileTest', {create: true}, function(dirEntry) {
-  
-  
-  
-  
-  
-    ...
-  }, errorHandler);
-}, errorHandler);
 
+function onGetDirectory(dirEntry) {
 
-
-function onInitFs(fs) {
-
-  fs.root.getFile('log.txt', {create: true}, function(fileEntry) {
+  dirEntry.getFile(theFileName, {create: true}, function(fileEntry) {
+    var blob;
 
     // Create a FileWriter object for our FileEntry (log.txt).
     fileEntry.createWriter(function(fileWriter) {
 
       fileWriter.onwriteend = function(e) {
-        console.log('Write completed.');
+        alert('Success! Write completed.');
       };
 
       fileWriter.onerror = function(e) {
-        console.log('Write failed: ' + e.toString());
+        alert('Write failed: ' + e.toString());
       };
 
       // Create a new Blob and write it to log.txt.
-      var blob = new Blob(['Lorem Ipsum'], {type: 'text/plain'});
+      blob = new Blob([theFileData], {type: 'text/plain'});
 
       fileWriter.write(blob);
 
@@ -66,4 +62,31 @@ function onInitFs(fs) {
 
 }
 
-window.requestFileSystem(window.TEMPORARY, 1024*1024, onInitFs, errorHandler);
+
+function doFileClick() {
+  theFileName = document.getElementById('fileName').value.trim();
+
+  if (!theFileName) {
+    alert('File Name can not be blank');
+    return;
+  }
+
+  theFileData = document.getElementById('srcText').innerHTML;
+
+  window.requestFileSystem(window.PERSISTENT, 5*1024*1024, function(fs) {
+    fs.root.getDirectory('AndFileTest', {create: true}, onGetDirectory, errorHandler);
+  }, errorHandler);
+}
+
+
+// Call on Android device ready event and also directly for PC testing. Thus
+// init may be called twice
+function init() {
+  document.getElementById('writeFile').onclick = doFileClick;
+}
+
+// Wait for device API libraries to load
+document.addEventListener("deviceready", init, false);
+
+init();
+
