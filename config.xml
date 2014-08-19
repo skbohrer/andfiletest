@@ -3,7 +3,7 @@
         xmlns:gap   = "http://phonegap.com/ns/1.0"
 		xmlns:android = "http://schemas.android.com/apk/res/android"
         id          = "com.steadmanhill.andfiletest"
-        versionCode = "4"
+        versionCode = "5"
         version     = "1.0" >
 
     <!-- versionCode is Android only: increase each build, unrelated to displayed version -->
@@ -20,7 +20,7 @@
 
 				<!-- preferences -->
 		<preference name="permissions" value="none"/>			<!-- core plugins add own permissions -->
-		<preference name="phonegap-version" value="3.4.0" /> 	<!-- all: current version of PhoneGap -->
+		<preference name="phonegap-version" value="3.5.0" /> 	<!-- all: current version of PhoneGap -->
 		<preference name="orientation" value="default" /> 		<!-- all: default means both landscape and portrait are enabled -->
 		<preference name="target-device" value="universal" /> 	<!-- all: possible values handset, tablet, or universal -->
 		<preference name="fullscreen" value="false" /> 			<!-- all: hides the status bar at the top of the screen -->
