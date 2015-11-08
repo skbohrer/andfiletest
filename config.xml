@@ -4,7 +4,7 @@
 		xmlns:android = "http://schemas.android.com/apk/res/android"
         id          = "com.steadmanhill.andfiletest"
         versionCode = "6"
-        version     = "1.2" >
+        version     = "1.3" >
 
     <!-- versionCode is Android only: increase each build, unrelated to displayed version -->
 
