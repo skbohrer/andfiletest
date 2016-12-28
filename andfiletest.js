@@ -113,12 +113,12 @@ function doFileClick() {
 
   theFileData = document.getElementById('srcText').innerHTML;
 
- /* window.requestFileSystem(window.PERSISTENT, 5*1024*1024, function(fs) { */
+  window.requestFileSystem(window.PERSISTENT, 5*1024*1024, function(fs) { 
     window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory,
 		function(dirent) {
 			dirent.getDirectory('AndFileTest', {create: true}, onGetDirectory, errorHandler);
 		}, errorHandler);
- /* }, errorHandler); */
+  }, errorHandler); 
 }
 
 
